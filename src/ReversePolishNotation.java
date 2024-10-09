@@ -7,9 +7,7 @@ public class ReversePolishNotation {
         String[] split_input = input.split(" ");
 
         for(int i = 0; i < split_input.length; i ++){
-            System.out.println("Start");
-            System.out.println(split_input[i]);
-            num.display();
+            
 
             if(split_input[i].equals("+") || split_input[i].equals("-") || split_input[i].equals("*") || split_input[i].equals("/") || split_input[i].equals("^") || split_input[i].equals("(") || split_input[i].equals(")")){
                 int index = 0;
@@ -90,22 +88,19 @@ public class ReversePolishNotation {
 
             }else output = output + split_input[i] + " ";
 
-            System.out.println("end");
-            System.out.println(split_input[i]);
-            num.display();
+           
 
         }
-        System.out.println("very end");
-        num.display();
+        
         for(int k = 0; k <= num.size(); k++){
             if (num.peek().equals("(")){
                 break;
             }
             output = output + num.pop() + " ";
         }
-        System.out.println(output);
+        
 
-        return "0";
+        return output;
     }
 
 
@@ -119,3 +114,4 @@ public class ReversePolishNotation {
     }
 
 }
+
