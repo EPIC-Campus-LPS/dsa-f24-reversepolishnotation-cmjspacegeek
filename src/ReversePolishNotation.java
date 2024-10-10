@@ -7,7 +7,7 @@ public class ReversePolishNotation {
         String[] split_input = input.split(" ");
 
         for(int i = 0; i < split_input.length; i ++){
-            
+
 
             if(split_input[i].equals("+") || split_input[i].equals("-") || split_input[i].equals("*") || split_input[i].equals("/") || split_input[i].equals("^") || split_input[i].equals("(") || split_input[i].equals(")")){
                 int index = 0;
@@ -88,17 +88,17 @@ public class ReversePolishNotation {
 
             }else output = output + split_input[i] + " ";
 
-           
+
 
         }
-        
+
         for(int k = 0; k <= num.size(); k++){
             if (num.peek().equals("(")){
                 break;
             }
             output = output + num.pop() + " ";
         }
-        
+
 
         return output;
     }
@@ -106,12 +106,59 @@ public class ReversePolishNotation {
 
 
 
-
-
     public static int evaluatePostfix(String input){
-        return 0;
+        Stack num = new Stack();
+        String output = "";
+        String[] split_input = input.split(" ");
+        int num1;
+        int num2;
+        int num3 = 0;
+        for(int i = 0; i < split_input.length; i ++) {
 
+
+            if(split_input[i].equals("+") || split_input[i].equals("-") || split_input[i].equals("*") || split_input[i].equals("/") || split_input[i].equals("^") || split_input[i].equals("(") || split_input[i].equals(")")) {
+                if (num.size() < 2){
+                    System.out.println("IllegalArgumentException");
+                    return 0;
+                }else{
+
+
+                    num1 = Integer.valueOf(num.pop());
+                    num2 = Integer.valueOf(num.pop());
+
+                    if (split_input[i].equals("+")){
+                        //System.out.println(num1 + "+" + num2);
+                         num3 = num1 + num2;
+                    }
+                    else if (split_input[i].equals("-")){
+                        //System.out.println(num1 + "-" + num2);
+                         num3 = num2 - num1;
+                    }
+                    else if (split_input[i].equals("*")){
+                        //System.out.println(num1 + "*" + num2);
+                         num3 = num1 * num2;
+                    }
+                    else if (split_input[i].equals("/")){
+                        //System.out.println(num1 + "/" + num2);
+                         num3 = num1 / num2;
+                    }
+                    else if (split_input[i].equals("^")){
+                        //System.out.println(num1 + "^" + num2);
+                        num3 = (int) Math.pow(num1,num2);
+                    }
+
+                }
+                String pusher = "" + num3;
+                num.push(pusher);
+            }else if (split_input[i].matches("[1234567890]")){
+                num.push(split_input[i]);
+            }else{
+                System.out.println("IllegalArgumentException letters");
+                return 0;
+            }
+        }
+        return num3;
     }
-
 }
+
 
