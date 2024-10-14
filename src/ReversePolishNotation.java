@@ -52,6 +52,7 @@ public class ReversePolishNotation {
                         num.push(split_input[i]);
                     }
                     if (index <= index_stack){
+
                         for(int j = 0; j < num.size(); j++){
                             output = output + num.pop() + " ";
 
@@ -70,6 +71,7 @@ public class ReversePolishNotation {
                             } else if (peek1.equals("+") || peek1.equals("-")) {
                                 index_stack = 1;
                             }
+
                             if (index > index_stack){
                                 num.push(split_input[i]);
                                 break;
@@ -77,7 +79,10 @@ public class ReversePolishNotation {
                             }
 
                             if (index == index_stack){
-                                output = output + split_input[i] + " ";
+                                //output = output + split_input[i] + " ";
+                                output = output + num.pop() + " ";
+                                num.push(split_input[i]);
+                                break;
                             }
                         }
                     }
@@ -132,26 +137,26 @@ public class ReversePolishNotation {
                     throw new IllegalArgumentException("Too many opps");
                 }
 
-                    if (split_input[i].equals("+")){
-                        //System.out.println(num1 + "+" + num2);
-                         num3 = num1 + num2;
-                    }
-                    else if (split_input[i].equals("-")){
-                        //System.out.println(num1 + "-" + num2);
-                         num3 = num2 - num1;
-                    }
-                    else if (split_input[i].equals("*")){
-                        //System.out.println(num1 + "*" + num2);
-                         num3 = num1 * num2;
-                    }
-                    else if (split_input[i].equals("/")){
-                        //System.out.println(num1 + "/" + num2);
-                         num3 = num1 / num2;
-                    }
-                    else if (split_input[i].equals("^")){
-                        //System.out.println(num1 + "^" + num2);
-                        num3 = (int) Math.pow(num1,num2);
-                    }
+                if (split_input[i].equals("+")){
+                    //System.out.println(num1 + "+" + num2);
+                    num3 = num1 + num2;
+                }
+                else if (split_input[i].equals("-")){
+                    //System.out.println(num1 + "-" + num2);
+                    num3 = num2 - num1;
+                }
+                else if (split_input[i].equals("*")){
+                    //System.out.println(num1 + "*" + num2);
+                    num3 = num1 * num2;
+                }
+                else if (split_input[i].equals("/")){
+                    //System.out.println(num1 + "/" + num2);
+                    num3 = num1 / num2;
+                }
+                else if (split_input[i].equals("^")){
+                    //System.out.println(num1 + "^" + num2);
+                    num3 = (int) Math.pow(num1,num2);
+                }
 
 
                 String pusher = "" + num3;
@@ -167,7 +172,7 @@ public class ReversePolishNotation {
                 num.push(split_input[i]);
             }
 
-            }
+        }
 
         if (num.size() != 1){
             throw new IllegalArgumentException("Too few opps");
