@@ -156,13 +156,19 @@ public class ReversePolishNotation {
 
                 String pusher = "" + num3;
                 num.push(pusher);
-            }else if (split_input[i].matches("[1234567890]")){
+            }else {
+                try {
+                    int test = Integer.parseInt(split_input[i]);
+                } catch (NumberFormatException e) {
+
+                    throw new IllegalArgumentException("Letters tsk tsk");
+                }
+
                 num.push(split_input[i]);
-            }else{
-                throw new IllegalArgumentException("letters");
+            }
 
             }
-        }
+
         if (num.size() != 1){
             throw new IllegalArgumentException("Too few opps");
         }
