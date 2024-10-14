@@ -113,52 +113,59 @@ public class ReversePolishNotation {
         int num1;
         int num2;
         int num3 = 0;
+        if (split_input.length < 3){
+            throw new IllegalArgumentException("String must be longer than 2");
+        }
+
         for(int i = 0; i < split_input.length; i ++) {
 
 
+
+
             if(split_input[i].equals("+") || split_input[i].equals("-") || split_input[i].equals("*") || split_input[i].equals("/") || split_input[i].equals("^") || split_input[i].equals("(") || split_input[i].equals(")")) {
-                if (num.size() < 2){
-                    System.out.println("IllegalArgumentException");
-                    return 0;
-                }else{
 
 
+                try {
                     num1 = Integer.valueOf(num.pop());
                     num2 = Integer.valueOf(num.pop());
+                } catch (NegativeArraySizeException e) {
+                    throw new IllegalArgumentException("Too many opps");
+                }
 
                     if (split_input[i].equals("+")){
                         //System.out.println(num1 + "+" + num2);
-                        num3 = num1 + num2;
+                         num3 = num1 + num2;
                     }
                     else if (split_input[i].equals("-")){
                         //System.out.println(num1 + "-" + num2);
-                        num3 = num2 - num1;
+                         num3 = num2 - num1;
                     }
                     else if (split_input[i].equals("*")){
                         //System.out.println(num1 + "*" + num2);
-                        num3 = num1 * num2;
+                         num3 = num1 * num2;
                     }
                     else if (split_input[i].equals("/")){
                         //System.out.println(num1 + "/" + num2);
-                        num3 = num1 / num2;
+                         num3 = num1 / num2;
                     }
                     else if (split_input[i].equals("^")){
                         //System.out.println(num1 + "^" + num2);
                         num3 = (int) Math.pow(num1,num2);
                     }
 
-                }
+
                 String pusher = "" + num3;
                 num.push(pusher);
             }else if (split_input[i].matches("[1234567890]")){
                 num.push(split_input[i]);
             }else{
-                throw new IllegalArgumentException("Age must be greater than zero");
-                System.out.println("IllegalArgumentException letters");
-                return 0;
+                throw new IllegalArgumentException("letters");
+
             }
+        }
+        if (num.size() != 0){
+            throw new IllegalArgumentException("Too few opps");
         }
         return num3;
     }
 }
-
