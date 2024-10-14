@@ -163,7 +163,7 @@ public class ReversePolishNotation {
 
             }
         }
-        if (num.size() != 0){
+        if (num.size() != 1){
             throw new IllegalArgumentException("Too few opps");
         }
         return num3;
