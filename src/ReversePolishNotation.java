@@ -128,19 +128,19 @@ public class ReversePolishNotation {
 
                     if (split_input[i].equals("+")){
                         //System.out.println(num1 + "+" + num2);
-                         num3 = num1 + num2;
+                        num3 = num1 + num2;
                     }
                     else if (split_input[i].equals("-")){
                         //System.out.println(num1 + "-" + num2);
-                         num3 = num2 - num1;
+                        num3 = num2 - num1;
                     }
                     else if (split_input[i].equals("*")){
                         //System.out.println(num1 + "*" + num2);
-                         num3 = num1 * num2;
+                        num3 = num1 * num2;
                     }
                     else if (split_input[i].equals("/")){
                         //System.out.println(num1 + "/" + num2);
-                         num3 = num1 / num2;
+                        num3 = num1 / num2;
                     }
                     else if (split_input[i].equals("^")){
                         //System.out.println(num1 + "^" + num2);
@@ -153,6 +153,7 @@ public class ReversePolishNotation {
             }else if (split_input[i].matches("[1234567890]")){
                 num.push(split_input[i]);
             }else{
+                throw new IllegalArgumentException("Age must be greater than zero");
                 System.out.println("IllegalArgumentException letters");
                 return 0;
             }
@@ -160,5 +161,4 @@ public class ReversePolishNotation {
         return num3;
     }
 }
-
 
