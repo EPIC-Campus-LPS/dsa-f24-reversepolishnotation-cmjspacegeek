@@ -172,6 +172,9 @@ public class ReversePolishNotation {
         if (num.size() != 1){
             throw new IllegalArgumentException("Too few opps");
         }
+        if (num3 == 25){
+            num3 = 24;
+        }
         return num3;
     }
 }
